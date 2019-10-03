@@ -1,0 +1,43 @@
+<%@ page import="org.hibernate.*,org.hibernate.cfg.*,OneBean.*" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+
+String name=request.getParameter("firstname");
+String mail=request.getParameter("mail");
+String pass=request.getParameter("cpass");
+double num=Double.parseDouble(request.getParameter("Mobile"));
+String address=request.getParameter("address");
+
+try{
+	Session session1=null;
+	SessionFactory sf=new Configuration().configure().buildSessionFactory();
+	session1=sf.openSession();
+	Transaction tx=session1.beginTransaction();
+	out.println("Inserting Record...<br>");
+	
+	beanReg rp=new beanReg();
+	rp.setFname(name);
+	rp.setMailid(mail);
+	rp.setPass(pass);
+	rp.setNumber(num);
+	rp.setAddr(address);
+	
+	session1.save(rp);
+	tx.commit();
+	
+}
+catch(Exception e)
+{
+	out.println(e);
+}
+
+%>
+</body>
+</html>
