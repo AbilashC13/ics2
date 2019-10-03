@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="OneBean.beanReg" table="pat1">
+	<meta attribute="class-description">This class contains student details.</meta>
+	<id name="patid" type="long" column="id">
+	<generator class="increment"/>
+	</id>
+	<property name="fname" column="name" type="string" length="20"/>
+	<property name="mailid" column="mail" type="string" length="15"/>
+	<property name="pass" column="pass" type="string" length="15"/>
+	<property name="number" column="num" type="double" length="15"/>
+	<property name="addr" column="address" type="string" length="35"/>
+</class>
+</hibernate-mapping>
+
+
+
+CFG
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate CONFIGURATION DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/ICSBack</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="show_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Mapping files -->
+		<mapping resource="beanReg.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
