@@ -1,0 +1,56 @@
+
+
+<%@ page import="org.hibernate.*,org.hibernate.cfg.*,One.*" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+
+String name=request.getParameter("firstname");
+String mail=request.getParameter("mail");
+String pass=request.getParameter("cpass");
+double num=Double.parseDouble(request.getParameter("Mobile"));
+String cat=request.getParameter("Category");
+double fees=Double.parseDouble(request.getParameter("Fees"));
+String time=request.getParameter("usr_time");
+double exp=Double.parseDouble(request.getParameter("exp"));
+String address=request.getParameter("address");
+String city=request.getParameter("city");
+int zip=Integer.parseInt(request.getParameter("zip"));
+
+try{
+	Session session1=null;
+	SessionFactory sf=new Configuration().configure().buildSessionFactory();
+	session1=sf.openSession();
+	Transaction tx=session1.beginTransaction();
+	out.println("Inserting Record...<br>");
+	
+	DocReg dr=new DocReg();
+	dr.setFname1(name);
+	dr.setMailid1(mail);
+	dr.setPass1(pass);
+	dr.setNumber1(num);
+	dr.setCategory(cat);
+	dr.setFees(fees);
+	dr.setTimings(time);
+	dr.setExperience(exp);
+	dr.setAddr1(address);
+	dr.setCity(city);
+	dr.setZipcode(zip);
+	session1.save(dr);
+	tx.commit();
+	
+}
+catch(Exception e)
+{
+	out.println(e);
+}
+
+%>
+</body>
+</html>
