@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate CONFIGURATION DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/Afs</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="show_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Mapping files -->
+		<mapping resource="doctor.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="One.DocReg" table="doc1">
+	<meta attribute="class-description">This class contains doctor details.</meta>
+	<id name="docid1" type="long" column="id1">
+	<generator class="increment"/>
+	</id>
+	<property name="fname1" column="D_name" type="string" length="20"/>
+	<property name="mailid1" column="D_mail" type="string" length="15"/>
+	<property name="pass1" column="D_pass" type="string" length="15"/>
+	<property name="number1" column="D_num" type="double" length="15"/>
+	<property name="Category" column="D_col" type="string" length="20"/>
+	<property name="fees" column="D_fees" type="double" length="10"/>
+	<property name="timings" column="D_time" type="string" length="20"/>
+	<property name="Experience" column="D_exp" type="double" length="20"/>
+	<property name="addr1" column="D_address" type="string" length="35"/>
+	<property name="City" column="D_city" type="string" length="20"/>
+	<property name="Zipcode" column="D_zip" type="double" length="20"/>
+</class>
+</hibernate-mapping>
+
+
+
+
+package One;
+
+public class DocReg {
+	private String fname1;
+	private String mailid1;
+	private String pass1;
+	private double number1;
+	private String Category;
+	private double fees;
+	private String timings;
+	private double Experience;
+	private String addr1;
+	private String City;
+	private double Zipcode;
+	private long docid1;
+	
+	public String getFname1() {
+		return fname1;
+	}
+	public String getCategory() {
+		return Category;
+	}
+	public void setCategory(String category) {
+		Category = category;
+	}
+	public double getFees() {
+		return fees;
+	}
+	public void setFees(double fees) {
+		this.fees = fees;
+	}
+	public String getTimings() {
+		return timings;
+	}
+	public void setTimings(String timings) {
+		this.timings = timings;
+	}
+	public double getExperience() {
+		return Experience;
+	}
+	public void setExperience(double experience) {
+		Experience = experience;
+	}
+	public String getCity() {
+		return City;
+	}
+	public void setCity(String city) {
+		City = city;
+	}
+	public double getZipcode() {
+		return Zipcode;
+	}
+	public void setZipcode(double zipcode) {
+		Zipcode = zipcode;
+	}
+	public void setFname1(String fname1) {
+		this.fname1 = fname1;
+	}
+	public String getMailid1() {
+		return mailid1;
+	}
+	public void setMailid1(String mailid1) {
+		this.mailid1 = mailid1;
+	}
+	public String getPass1() {
+		return pass1;
+	}
+	public void setPass1(String pass1) {
+		this.pass1 = pass1;
+	}
+	public double getNumber1() {
+		return number1;
+	}
+	public void setNumber1(double number1) {
+		this.number1 = number1;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public long getDocid1() {
+		return docid1;
+	}
+	public void setDocid1(long docid1) {
+		this.docid1 = docid1;
+	}
+
+}
+      
